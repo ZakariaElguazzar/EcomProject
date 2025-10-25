@@ -2,13 +2,13 @@ spring:
   cloud:
     gateway:
       server:
-        webmvc:
+        webflux:
           routes:
             - id: customer-service
-              uri: http://localhost:8080
+              uri: lb://CUSTOMER-SERVICE
               predicates:
                 - Path=/rest-repos/customers/**
             - id: inventory-service
-              uri: http://localhost:8081
+              uri: lb://INVENTORY-SERVICE
               predicates:
                 - Path=/rest-repos/products/**
