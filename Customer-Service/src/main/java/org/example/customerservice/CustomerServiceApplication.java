@@ -2,17 +2,20 @@ package org.example.customerservice;
 
 import lombok.AllArgsConstructor;
 import org.example.customerservice.Entities.Customer;
-import org.example.customerservice.Repositories.CustomerRepo;
 import org.example.customerservice.Services.CustomerService;
+import org.example.customerservice.config.CustomerConfigParams;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 
 @SpringBootApplication
 @AllArgsConstructor
+@EnableConfigurationProperties(CustomerConfigParams.class)
+//@PropertySource("classpath:Customer-Service.properties")
 public class CustomerServiceApplication {
     private CustomerService customerService;
 
