@@ -32,7 +32,7 @@ EcomProject est une application e-commerce basée sur une architecture microserv
                     ┌───────▼────────┐
                     │  Gateway       │
                     │  Service       │
-                    │  (Port 8888)   │
+                    │  (Port 9999)   │
                     └───────┬────────┘
                             │
             ┌───────────────┼───────────────┐
@@ -111,7 +111,7 @@ Service de facturation utilisant OpenFeign pour communiquer avec Customer et Inv
 - `GET /bills/{id}` - Récupère une facture complète (client + produits)
 - `POST /bills` - Crée une nouvelle facture
 
-### 4. **Gateway Service** (Port: 8888)
+### 4. **Gateway Service** (Port: 9999)
 Point d'entrée unique pour tous les microservices.
 
 **Fonctionnalités :**
@@ -192,7 +192,7 @@ mvn clean install
 cd Config-Service
 mvn spring-boot:run
 ```
-Attendre que le service démarre sur le port 8888.
+Attendre que le service démarre sur le port 9999.
 
 #### Étape 2 : Discovery Service
 ```bash
@@ -265,7 +265,7 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://localhost:8888
+      uri: http://localhost:9999
 
 eureka:
   client:
@@ -279,7 +279,7 @@ eureka:
 
 ```yaml
 server:
-  port: 8888
+  port: 9999
 
 spring:
   application:
@@ -417,7 +417,7 @@ curl http://localhost:8888/bills/1
 
 | Service | Port | Description |
 |---------|------|-------------|
-| Config Service | 8888 | Configuration centralisée |
+| Config Service | 9999 | Configuration centralisée |
 | Discovery Service | 8761 | Eureka Server |
 | Gateway Service | 8888 | API Gateway |
 | Customer Service | 8081 | Gestion des clients |
